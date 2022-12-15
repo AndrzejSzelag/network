@@ -1,0 +1,81 @@
+body {
+    background-color: #f9f9f9;
+}
+
+.container {
+    position: relative;
+}
+
+.container .element {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.my_img {
+    border-radius: 50%;
+    box-shadow: 0 0 4px 0 rgba(189, 187, 187, 0.7), 0 5px 15px 0 rgba(146, 145, 145, 0.1);
+    background-color: #f2f2f2;
+    vertical-align: middle;
+    max-width: 75px;
+    max-height: 75px;
+}
+
+.my_shadow {
+    box-shadow: 0 1px 4px 0 rgba(189, 187, 187, 0.7), 0 5px 15px 0 rgba(146, 145, 145, 0.1);
+    background-color: #f2f2f2;
+}
+
+.my_post_footer {
+    background-color: #ffffff;
+    border-top: none;
+    border-bottom: 3px solid orange;
+}
+
+.my_alert {
+    padding-bottom: 10px;
+    color: red;
+    font-weight: bold;
+}
+
+.likebtn, .unlikebtn {
+    display: inline;
+    font-size: 0.85em;
+    color: #555555;
+    width: 20px;
+    height: 20px;
+}
+
+.likebtn img, .unlikebtn img {
+    position: relative;
+    vertical-align: middle;
+}
+
+.my_font_likes {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.my_font_content {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.form_new_post {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    animation-name: form_new_post;
+    animation-duration: 1s;
+    animation-play-state: running;
+}
+
+@keyframes form_new_post {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

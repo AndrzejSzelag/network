@@ -1,0 +1,144 @@
+{% extends "network/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<!-- header -->
+<div class="container">
+    <div class="mt-4">
+        {% block pname %}
+
+        {% if user.username %}
+        <div class="h4 font-weight-light">Welcome <span><a class="text-dark font-weight-bolder"
+                    href="{% url 'profile' user.username %}">{{ user.username }}</a></span>!</div>
+        {% else %}
+        <div class="h4 font-weight-light">Welcome <strong>Guest</strong>!</div>
+        {% endif %}
+
+        {% if not page_obj %}
+        <div class="h5 font-weight-light my-3">No data...</div>
+        {% else %}
+        {% block allorprofile %}
+        <div class="h5 my-3 font-weight-light">All Posts:
+            <span class="badge badge-pill badge-warning">{{ items_count }}</span>
+        </div>
+        {% endblock allorprofile %}
+        {% endif %}
+
+        {% endblock pname %}
+    </div>
+</div>
+
+<!-- posts -->
+<div class="container" id="posts">
+    {% block forposts %}
+
+    {% for bpost in page_obj %}
+    <div class="my-2 card my_shadow bg-white rounded-lg">
+
+        <!-- header: user and timestamp -->
+        <div class="card-header">
+            <img src="/static/network/person.svg" width="20" height="20" alt="" />
+            <a class="text-dark font-weight-bolder" href="{% url 'profile' bpost.username %}">{{ bpost.username }}</a>
+            <span>
+                <footer class="ml-4 blockquote-footer">
+                    <cite>on</cite>&nbsp;{{ bpost.timestamp }}&nbsp;<cite>wrote:</cite></footer>
+            </span>
+        </div>
+
+        <!-- content -->
+        <div class="p-3 card-body" id="card-body-{{ bpost.id }}">
+            <span class="text-dark my_font_content">{{ bpost.content }}</span>
+        </div>
+
+        <!-- likes, unlikes-->
+        <div class="card-footer bg-white border-0" id="likes-{{ bpost.id }}">
+            {% if user.username %}
+
+            {% if bpost.id in liked_ids %}
+            <div class="unlikebtn">
+                <img onclick="unlike_post({{ bpost.id }},{{ cuser }})" id="unlikebtn-{{ bpost.id }}"
+                    src="/static/network/heart-fill.svg" alt="" width="15" height="15" />
+                <span>{{ bpost.likes }}</span>
+            </div>
+            {% else %}
+            <div class="likebtn">
+                <img onclick="like_post( {{ bpost.id }},{{ cuser }} )" id="likebtn-{{ bpost.id }}"
+                    src="/static/network/heart.svg" alt="" width="15" height="15" />
+                <span>{{ bpost.likes }}</span>
+            </div>
+            {% endif %}
+
+            {% else %}
+            <div class="text-secondary my_font_likes">Likes: <span
+                    class="badge badge-pill badge-warning">{{ bpost.likes }}</span></div>
+            {% endif %}
+        </div>
+
+        <!-- edit -->
+        {% if user.username == bpost.username %}
+        <div class="card-footer d-flex justify-content-end my_post_footer">
+            <img onclick=edit_post({{ bpost.id }}) src="/static/network/pencil-square.svg" width="25" height="25"
+                title="Edit post" alt="" /></img>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% endblock forposts %}
+</div>
+
+<!-- pagination -->
+{% block pagination %}
+<div class="pagination justify-content-center">
+    <ul class="pagination">
+        {% if page_obj.has_other_pages %}
+        {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="text-secondary mr-2">
+            Page <span class="text-dark font-weight-bolder" title="Current Page">{{ i }}</span> of
+            <span>{{ page_obj.paginator.num_pages }}</span>
+        </li>
+        {% endif %}
+        {% endfor %}
+        <li class="text-secondary mr-2">
+            <span>{{ page_obj.start_index }}-{{ page_obj.end_index }} ({{ page_obj.paginator.count }})</span>
+        </li>
+
+        <!-- Previous page -->
+        {% if page_obj.has_previous %}
+        <li class="mr-1">
+            <a href="?page={{ page_obj.previous_page_number }}">
+                <button class="btn btn-sm btn-light border" type="submit" value="Previous">
+                    <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                    Previous
+                </button>
+            </a>
+        </li>
+        {% else %}
+        <li class="mr-1">
+            <button class="btn btn-sm alert-secondary rounded border disabled">Previous</button>
+        </li>
+        {% endif %}
+
+        <!-- Next page -->
+        {% if page_obj.has_next %}
+        <li class="mr-1">
+            <a href="?page={{ page_obj.next_page_number }}">
+                <button class="btn btn-sm btn-light border" type="submit" value="Next">
+                    <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                    Next
+                </button>
+            </a>
+        </li>
+        {% else %}
+        <li class="mr-1">
+            <button class="btn btn-sm alert-secondary rounded border disabled">Next</button>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock pagination %}
+{% endblock %}

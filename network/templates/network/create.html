@@ -1,0 +1,41 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="container form_new_post">
+
+    <div class="row d-flex justify-content-center" style="padding-top: 15%">
+        <div class="card col-sm-6 my_shadow bg-white rounded-lg">
+            <div class="mt-2">
+                <div class="mt-3 mb-3">
+                    <ul class="list-group">
+                        <li class="d-flex">
+                            <span class="mr-2"><img src="/static/network/pencil-square.svg" alt="" width="25"
+                                    height="25" /></span>
+                            <div class="h5 text-ddark">New Post</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    {% if message %}
+                    <div class="my_alert">{{ message }}</div>
+                    {% endif %}
+                </div>
+
+                <form action="{% url 'save' %}" method="POST">
+                    <div class="form-group mb-2">
+                        <textarea class="form-control" rows="7" placeholder="Your Post" name="content" maxlength="300"></textarea>
+                        <small class="form-text text-muted"><strong>Required</strong>, maximum 300 characters</small>
+                    </div>
+                    <div class="my-3 text-center">
+                        <button class="btn btn-light border" type="submit" value="Save">
+                            <span class="spinner-grow spinner-grow-sm text-warning" role="status"
+                                aria-hidden="true"></span>&nbsp;Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

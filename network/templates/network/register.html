@@ -1,0 +1,52 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="container">
+
+    <div class="row d-flex justify-content-center" style="padding-top: 15%">
+        <div class="card col-sm-6 my_shadow bg-white rounded-lg">
+            <div class="mt-2">
+                <div class="mt-2 mb-4 text-dark">
+                    <h5>Register</h5>
+                </div>
+
+                <div>
+                    {% if message %}
+                    <div class="my_alert">{{ message }}</div>
+                    {% endif %}
+
+                    <div class="my-3">
+                        <form action="{% url 'register' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group mb-2">
+                                <input class="form-control" autofocus type="text" name="username"
+                                    placeholder="Username">
+                            </div>
+                            <div class="form-group mb-2">
+                                <input class="form-control" type="email" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="form-group mb-2">
+                                <input class="form-control mb-2" type="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="form-group mb-2">
+                                <input class="form-control mb-2" type="password" name="confirmation"
+                                    placeholder="Confirm Password">
+                            </div>
+                            <div class="my-3 text-center">
+                                <button class="btn btn-light border" type="submit" value="Register">
+                                    <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                                    Register
+                                </button>
+                            </div>
+                        </form>
+
+                        <div>
+                            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "network/index.html" %}
+{% load static %}
+{% block pname %}
+
+<div class="container">
+    <div class="card-group">
+        <div class="card text-center border-0">
+            <div class="card-body" style="background-color: #f9f9f9;">
+                <div class="h2 mb-1">
+                    {% block allorprofile %}
+                    <div class="h5 font-weight-lighter mb-0">
+                        <span><img class="my_img" src="{% static 'network/avatar.png' %}" width="75px" height="75px"></span>
+                    </div>
+                    <div><span class="h5">{{profilename}}</span></div>
+                    {% endblock %}
+                </div>
+                
+                <div id="followdiv">
+                    {% if user.username %}
+                    {% if user.username != profilename %}
+                    {% if isfollow %}
+
+                    <!-- Unfollow button -->
+                    <a href="{% url 'unfollow' profilename %}">
+                        <button class="btn btn-sm alert-danger font-weight-bolder" type="submit" value="Unfollow">
+                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                            Unfollow
+                        </button>
+                    </a>
+                    {% else %}
+
+                    <!-- Follow button -->
+                    <a href="{% url 'follow' profilename %}">
+                        <button class="btn btn-sm alert-success font-weight-bolder" type="submit" value="Follow">
+                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                            Follow
+                        </button>
+                    </a>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="card text-center border-0">
+            <div class="card-body" style="background-color: #f9f9f9;">
+                <div class="card-title h3">{{items_count}}</div>
+                <small class="text-muted h5 text-secondary font-weight-lighter">Posts</small>
+            </div>
+        </div>
+        <div class="card text-center border-0">
+            <div class="card-body" style="background-color: #f9f9f9;">
+                <div class="card-title h3">{{followers}}</div>
+                <small class="text-muted h5 text-secondary font-weight-lighter">Followers</small>
+            </div>
+        </div>
+        <div class="card text-center border-0">
+            <div class="card-body" style="background-color: #f9f9f9;">
+                <div class="card-title h3">{{following}}</div>
+                <small class="text-muted h5 text-secondary font-weight-lighter">Following</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
