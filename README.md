@@ -7,11 +7,11 @@ Design a Twitter-like social network website for making posts and following user
 
 ### Specification
 
-Check https://cs50.harvard.edu/web/2020/projects/4/network/
+Visit https://cs50.harvard.edu/web/2020/projects/4/network/
 
 ### Video
 
-YouTube https://youtu.be/tz38JFWBWDY
+Visit https://youtu.be/tz38JFWBWDY
 
 ### Requirements
 
