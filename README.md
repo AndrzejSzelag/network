@@ -1,6 +1,6 @@
 # Network
 
-📋 #### Project 4 from Edx | Harvard CS50's Web Programming with Python and JavaScript Course
+#### 📋 Project 4 from Edx | Harvard CS50's Web Programming with Python and JavaScript Course
 
 ✒️ Design a Twitter-like social network website for making posts and following users.
 
