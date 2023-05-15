@@ -11,7 +11,7 @@
 
 ### Video
 
-🚀 https://youtu.be/tz38JFWBWDY
+🚀 [VIDEO: network](https://youtu.be/tz38JFWBWDY)
 
 ### Requirements
 
