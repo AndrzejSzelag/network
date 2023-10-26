@@ -4,6 +4,18 @@
 
 ✒️ Design a Twitter-like social network website for making posts and following users.
 
+![register.java](register.png "NETWORK - Register")
+
+![post.java](post.png "NETWORK - Post")
+
+![quest.java](quest.png "NETWORK - Guest")
+
+![follow.java](follow.png "NETWORK - Follow")
+
+![following.java](following.png "NETWORK - Following")
+
+![unfollow.java](unfollow.png "NETWORK - Unfollow")
+
 
 ### Specification
 
