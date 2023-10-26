@@ -28,7 +28,7 @@
 ### Requirements
 
 * Python 3.11.1
-* Django 4.1.4
+* Django 4.1.4 (if you have a _requirements.txt_ file type this command: __python -m pip install -r requirements.txt__)
 
 ### How to run? 
 1. Go to the directory which contains "__manage.py__" file
