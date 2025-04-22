@@ -2,6 +2,7 @@
 
 [<img alt="Python" src="https://img.shields.io/badge/Python-3.11.1-3776AB.svg?logo=python">](https://www.python.org/)
 [<img alt="Django" src="https://img.shields.io/badge/Django-4.1.4-092E20.svg?logo=django">](https://www.djangoproject.com/)
+[<img alt="SQLite3" src="https://img.shields.io/badge/SQLite3-3.45.1-003B57.svg?logo=sqlite&logoColor=white">](https://www.sqlite.org/)
 
 #### 📘 Project 4 from Edx | Harvard CS50's Web Programming with Python and JavaScript Course
 ✒️ Design a Twitter-like social network website for making posts and following users.
